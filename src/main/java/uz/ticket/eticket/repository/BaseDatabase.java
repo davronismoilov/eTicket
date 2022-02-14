@@ -24,7 +24,7 @@ public abstract class BaseDatabase<R> {
 
     public abstract long delete(Long id);
 
-    protected Connection getConnection() {
+    protected  static Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(url, username, password);
