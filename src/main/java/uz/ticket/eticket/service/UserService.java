@@ -29,7 +29,6 @@ public class UserService {
     }
 
     public ApiResponse login(UserDTO user) {
-        User user1 = userRepository.findUserByEmailAnAndPasswordParams(user.getPassword(), user.getEmail());
         return null;
 
     }
@@ -42,6 +41,7 @@ public class UserService {
         role.setName("Admin");
         roleRepository.save(role);
         user1.setRole(role);
+
 
 
         userRepository.save(user1);

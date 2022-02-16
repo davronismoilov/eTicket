@@ -1,21 +1,47 @@
 package uz.ticket.eticket.repository;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import uz.ticket.eticket.entity.User;
 
+import java.util.Optional;
+
 
 @Component
-public interface UserRepository extends CrudRepository<User , Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 
-    @Query("SELECT u FROM User u WHERE u.password = :password and u.email = :email")
-    User findUserByEmailAnAndPasswordParams(
-            @Param("password") String  password,
-            @Param("email") String email);
+    Optional<User> findByUsernameOrEmail(String username, String phoneNumber);
+
+    Optional<User> findByUsername(String email);
+
+    Boolean existsByUsername(String email);
+
+    Boolean existsByPhone(String phoneNumber);
 
 
 }
+
+
+/**
+ * traffic
+ * <p>
+ * id        1
+ * name      tosh-bux
+ * date      12/23/2021
+ * train_id   2
+ * <p>
+ * <p>
+ * station
+ * id       1       3      4        5
+ * name     tosh     jiz   sir      bux
+ * <p>
+ * <p>
+ * traffic_city
+ * <p>
+ * id
+ * traffic_id  1
+ * station_id  2
+ * time        23.30
+ * date         12/23
+ */
