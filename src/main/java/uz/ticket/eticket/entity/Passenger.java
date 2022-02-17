@@ -20,10 +20,10 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(nullable = false)
     String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(nullable = false)
     String lastName;
 
     @Column(nullable = false)
@@ -40,6 +40,9 @@ public class Passenger {
 
     @OneToOne
     PassportType passportType;
+
+//    @OneToOne
+//    Ticket ticket;
 
 
 }

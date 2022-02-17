@@ -1,6 +1,8 @@
 package uz.ticket.eticket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.ticket.eticket.entity.PassportType;
 import uz.ticket.eticket.repository.PassportTypeRepository;
@@ -13,23 +15,19 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/passport_type")
 public class PassportTypeController {
-    final
-    PassportTypeRepository passportTypeRepository;
 
     final PassportTypeService passportTypeService;
 
-
     @Autowired
-    public PassportTypeController(PassportTypeRepository passportTypeRepository, PassportTypeService passportTypeService) {
-        this.passportTypeRepository = passportTypeRepository;
+    public PassportTypeController( PassportTypeService passportTypeService) {
         this.passportTypeService = passportTypeService;
     }
 
 
     // get all passport types
     @GetMapping(value = "/all_list")
-    public ApiResponse getAllList() {
-        return passportTypeService.getAllType();
+    public ResponseEntity<?> getAllList() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(passportTypeService.getAllType());
     }
 
 
