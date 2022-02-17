@@ -17,5 +17,6 @@ public class Seat {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         long id;
         boolean is_available = true;
+
         int seatNumber;
 }
