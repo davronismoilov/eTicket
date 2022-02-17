@@ -33,8 +33,13 @@ public class Passenger {
     String serial;
 
     @Column(nullable = false)
+    String birthDate;
+
+    @Column(nullable = false)
     String countryName;
 
     @OneToOne
     PassportType passportType;
+
+
 }

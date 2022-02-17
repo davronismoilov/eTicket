@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class PassportType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @Column(name = "first_name" ,nullable = false)

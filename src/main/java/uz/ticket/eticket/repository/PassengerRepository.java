@@ -6,4 +6,5 @@ import uz.ticket.eticket.entity.Passenger;
 
 @Component
 public interface PassengerRepository extends JpaRepository<Passenger , Long> {
+
 }
