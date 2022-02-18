@@ -1,10 +1,11 @@
 package uz.ticket.eticket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import uz.ticket.eticket.entity.User;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import uz.ticket.eticket.payload.UserDTO;
-import uz.ticket.eticket.repository.UserRepository;
 import uz.ticket.eticket.response.ApiResponse;
 import uz.ticket.eticket.service.UserService;
 
