@@ -18,9 +18,24 @@ public class TrainController {
         return ResponseEntity.ok(trainService.save(train));
     }
 
+    @PostMapping(value = "update")
+    public ResponseEntity<?> updateTrain(@RequestBody Train train, @PathVariable Long id) {
+        return ResponseEntity.ok(trainService.update(id, train));
+    }
+
+    @PostMapping(value = "delete")
+    public ResponseEntity<?> deleteTrain(@RequestBody Long id) {
+        return ResponseEntity.ok(trainService.delete(id));
+    }
+
     @GetMapping(value = "findById")
     public ResponseEntity<?> getTrainById(@PathVariable Long id) {
         return ResponseEntity.ok(trainService.findById(id));
+    }
+
+    @GetMapping(value = "findAll")
+    public ResponseEntity<?> getTrainList() {
+        return ResponseEntity.ok(trainService.findAll());
     }
 
 }

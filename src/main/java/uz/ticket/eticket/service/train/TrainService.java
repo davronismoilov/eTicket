@@ -36,4 +36,21 @@ public class TrainService {
         SUCCESS.setData(saveTrain);
         return SUCCESS;
     }
+
+    public ApiResponse findAll() {
+        SUCCESS.setData(trainRepository.findAll());
+        return SUCCESS;
+    }
+
+    public ApiResponse update(Long id,Train train) {
+        delete(id);
+        ApiResponse save = save(train);
+        SUCCESS.setData(save);
+        return SUCCESS;
+    }
+
+    public ApiResponse delete(Long id) {
+        trainRepository.deleteById(id);
+        return SUCCESS;
+    }
 }
