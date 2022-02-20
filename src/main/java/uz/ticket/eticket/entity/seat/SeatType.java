@@ -19,6 +19,11 @@ public class SeatType {
     @Column(unique = true, nullable = false)
     String name;
 
+
+
+
+
+
     public SeatType(long id, String name) {
         this.id = id;
         this.name = name;
