@@ -1,4 +1,4 @@
-package uz.ticket.eticket.entity;
+package uz.ticket.eticket.entity.train;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

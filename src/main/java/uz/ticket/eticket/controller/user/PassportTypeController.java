@@ -1,16 +1,11 @@
-package uz.ticket.eticket.controller;
+package uz.ticket.eticket.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.ticket.eticket.entity.PassportType;
-import uz.ticket.eticket.repository.PassportTypeRepository;
 import uz.ticket.eticket.response.ApiResponse;
-import uz.ticket.eticket.service.PassportTypeService;
-
-import java.util.List;
-import java.util.Optional;
+import uz.ticket.eticket.service.user.PassportTypeService;
 
 @RestController
 @RequestMapping("/api/passport/type")

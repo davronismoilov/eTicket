@@ -1,4 +1,4 @@
-package uz.ticket.eticket.service;
+package uz.ticket.eticket.service.user;
 
 import org.springframework.stereotype.Service;
 

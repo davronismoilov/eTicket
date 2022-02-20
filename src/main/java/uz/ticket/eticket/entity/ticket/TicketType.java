@@ -1,4 +1,4 @@
-package uz.ticket.eticket.entity;
+package uz.ticket.eticket.entity.ticket;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.enums.Roles;
 
 import javax.persistence.*;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,15 +16,14 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 @Entity
-public class Role {
+public class TicketType {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
     @Column(unique = true, nullable = false)
     String name;
-
-    public Role(String name) {
-        this.name = name;
-    }
 }
+

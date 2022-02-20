@@ -1,5 +1,5 @@
 package uz.ticket.eticket.enums;
 
-public enum Roles {
+public enum Role {
     ADMIN , USER
 }

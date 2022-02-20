@@ -1,11 +1,10 @@
-package uz.ticket.eticket.service;
+package uz.ticket.eticket.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import uz.ticket.eticket.controller.PassportTypeController;
-import uz.ticket.eticket.entity.PassportType;
-import uz.ticket.eticket.repository.PassportTypeRepository;
+import uz.ticket.eticket.entity.user.PassportType;
+import uz.ticket.eticket.repository.user.PassportTypeRepository;
 import uz.ticket.eticket.response.ApiResponse;
 import uz.ticket.eticket.response.BaseResponse;
 
