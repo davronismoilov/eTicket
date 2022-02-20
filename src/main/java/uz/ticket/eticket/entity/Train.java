@@ -14,7 +14,7 @@ public class Train {
     long id;
 
     @Column(unique = true)
-    int code;
+    String code;
 
     int capacity;
 }

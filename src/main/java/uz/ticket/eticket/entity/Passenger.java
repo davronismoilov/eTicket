@@ -41,8 +41,8 @@ public class Passenger {
     @OneToOne
     PassportType passportType;
 
-//    @OneToOne
-//    Ticket ticket;
+    @OneToOne
+    Ticket ticket;
 
 
 }

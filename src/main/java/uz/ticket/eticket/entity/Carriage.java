@@ -17,7 +17,8 @@ public class Carriage {
     long trainId;
     @ManyToOne
     CarriageType carriageType;
-    @OneToMany
-    List<Seat> seatList;
+
+    int number;
+
 
 }

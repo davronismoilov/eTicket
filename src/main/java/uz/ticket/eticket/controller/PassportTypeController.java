@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/passport_type")
+@RequestMapping("/api/passport/type")
 public class PassportTypeController {
 
     final PassportTypeService passportTypeService;
@@ -25,7 +25,7 @@ public class PassportTypeController {
 
 
     // get all passport types
-    @GetMapping(value = "/all_list")
+    @GetMapping(value = "/all")
     public ResponseEntity<?> getAllList() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(passportTypeService.getAllType());
     }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import uz.ticket.eticket.entity.PassportType;
 
 import javax.websocket.server.PathParam;
-import java.util.List;
 import java.util.Optional;
 
 @Component

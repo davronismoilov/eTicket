@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import uz.ticket.eticket.enums.Roles;
 
 import javax.persistence.*;
 
@@ -22,4 +23,8 @@ public class Role {
 
     @Column(unique = true, nullable = false)
     String name;
+
+    public Role(String name) {
+        this.name = name;
+    }
 }

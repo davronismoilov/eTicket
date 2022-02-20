@@ -24,4 +24,5 @@ public class PassportType {
     @Column(name = "first_name" ,nullable = false)
     String name;
 
+
 }
