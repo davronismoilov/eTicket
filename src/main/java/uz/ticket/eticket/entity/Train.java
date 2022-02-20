@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,5 +17,9 @@ public class Train {
     @Column(unique = true)
     int code;
 
+    @Column
     int capacity;
+
+    @OneToMany
+    List<TicketType> ticketTypes;
 }

@@ -18,12 +18,15 @@ import javax.persistence.*;
 @Entity
 public class TicketType {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
     @Column(unique = true, nullable = false)
     String name;
+
+    @Column
+    double price;
+
 }
 
