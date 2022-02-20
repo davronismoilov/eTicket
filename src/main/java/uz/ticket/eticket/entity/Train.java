@@ -12,13 +12,13 @@ import java.util.List;
 public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    int id;
 
     @Column(unique = true)
-    int code;
+    String code;
 
     @Column
-    int capacity;
+    int traffic_id;
 
     @OneToMany
     List<TicketType> ticketTypes;
