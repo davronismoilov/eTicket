@@ -3,8 +3,6 @@ package uz.ticket.eticket.entity.user;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.entity.base.BaseEntity;
-import uz.ticket.eticket.entity.user.Role;
 
 import javax.persistence.*;
 

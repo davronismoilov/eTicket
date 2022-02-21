@@ -2,7 +2,6 @@ package uz.ticket.eticket.entity.train;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
 
