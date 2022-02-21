@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import uz.ticket.eticket.entity.base.BaseEntity;
 import uz.ticket.eticket.entity.seat.SeatType;
 import uz.ticket.eticket.entity.user.Passenger;
 
