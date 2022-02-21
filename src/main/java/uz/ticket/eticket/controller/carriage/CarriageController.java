@@ -9,8 +9,11 @@ import uz.ticket.eticket.service.carriage.CarriageService;
 
 @RestController
 public class CarriageController {
-    @Autowired
-    public CarriageService carriageService;
+    public final CarriageService carriageService;
+
+    public CarriageController(CarriageService carriageService) {
+        this.carriageService = carriageService;
+    }
 
     @GetMapping("findAll")
     public ResponseEntity<?> getCarriage() {
