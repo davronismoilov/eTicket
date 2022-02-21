@@ -24,5 +24,5 @@ public abstract class BaseEntity {
     @LastModifiedBy
     private LocalDateTime updatedDate;
     private boolean isActive;
-    private String name;
+
 }
