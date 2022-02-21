@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
 
@@ -15,10 +16,7 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 @Entity
-public class Passenger {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+public class Passenger extends BaseEntity {
 
     @Column(nullable = false)
     String firstName;

@@ -2,24 +2,17 @@ package uz.ticket.eticket.entity.train;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Train {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+public class Train extends BaseEntity {
 
     @Column(unique = true)
     String code;
 
-    @Column
-    int traffic_id;
-
-    @OneToMany
-    List<TicketType> ticketTypes;
+    int capacity;
 }

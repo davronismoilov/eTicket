@@ -3,6 +3,7 @@ package uz.ticket.eticket.entity.seat;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
 
@@ -10,10 +11,8 @@ import javax.persistence.*;
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class Seat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+public class Seat extends BaseEntity {
+
     boolean is_available = true;
     int seatNumber;
     @ManyToOne

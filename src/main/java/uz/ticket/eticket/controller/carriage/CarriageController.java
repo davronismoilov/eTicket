@@ -9,26 +9,33 @@ import uz.ticket.eticket.service.carriage.CarriageService;
 
 @RestController
 public class CarriageController {
-    @Autowired
-    public CarriageService carriageService;
+    public final CarriageService carriageService;
+
+    public CarriageController(CarriageService carriageService) {
+        this.carriageService = carriageService;
+    }
 
     @GetMapping("findAll")
     public ResponseEntity<?> getCarriage() {
         return ResponseEntity.ok(carriageService.getCarriagetList());
     }
+
     @PostMapping("save")
     public ResponseEntity<?> addCarriage(@RequestBody Carriage carriage) {
         return ResponseEntity.ok(carriageService.addCarriage(carriage));
     }
-    @PostMapping("update")
+
+    @PutMapping("update")
     public ResponseEntity<?> updateCarriage(@RequestBody Carriage carriage, @PathVariable Long id) {
         return ResponseEntity.ok(carriageService.updateCarriage(id, carriage));
     }
-    @PostMapping("delete")
+
+    @DeleteMapping("delete")
     public ResponseEntity<?> deleteCarriage(@PathVariable Long id) {
         return ResponseEntity.ok(carriageService.deleteCarriage(id));
     }
-    @PostMapping("getById")
+
+    @GetMapping("getById")
     public ResponseEntity<?> getByIdCarriage(@PathVariable Long id) {
         return ResponseEntity.ok(carriageService.getByIdCarriage(id));
     }

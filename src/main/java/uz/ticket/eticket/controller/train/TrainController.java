@@ -18,12 +18,12 @@ public class TrainController {
         return ResponseEntity.ok(trainService.save(train));
     }
 
-    @PostMapping(value = "update")
+    @PutMapping(value = "update")
     public ResponseEntity<?> updateTrain(@RequestBody Train train, @PathVariable Long id) {
         return ResponseEntity.ok(trainService.update(id, train));
     }
 
-    @PostMapping(value = "delete")
+    @DeleteMapping(value = "delete")
     public ResponseEntity<?> deleteTrain(@RequestBody Long id) {
         return ResponseEntity.ok(trainService.delete(id));
     }
