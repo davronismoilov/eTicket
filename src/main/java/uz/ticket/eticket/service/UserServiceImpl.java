@@ -5,28 +5,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.entity.Role;
-import uz.ticket.eticket.entity.User;
+import uz.ticket.eticket.controller.user.entity.user.User;
 import uz.ticket.eticket.payload.UserDTO;
 import uz.ticket.eticket.repository.UserRepository;
-import uz.ticket.eticket.response.ApiResponse;
 import uz.ticket.eticket.response.BaseResponse;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 
-/**
- * Created by Arpit Khandelwal.
- */
 @Component
 public class UserServiceImpl implements BaseResponse {
 
-    private  final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    private  final UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
@@ -35,10 +27,9 @@ public class UserServiceImpl implements BaseResponse {
     }
 
 
-
     public ResponseEntity<?> signup(UserDTO userDto) {
         Optional<User> byEmail = userRepository.findByEmail(userDto.getEmail());
-        if (!byEmail.isPresent()) {
+        if (byEmail.isEmpty()) {
             User user = new User();
             user.setEmail(userDto.getEmail());
             user.setPhoneNumber(userDto.getMobileNumber());
@@ -51,6 +42,19 @@ public class UserServiceImpl implements BaseResponse {
     }
 
 
+    public ResponseEntity<?> login(UserDTO userDto) {
+        Optional<User> byEmail = userRepository.findByEmail(userDto.getEmail());
+        if (byEmail.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(USER_NOT_FOUND);
+
+        }
+        if (bCryptPasswordEncoder.encode(userDto.getPassword()).equals(byEmail.get().getPassword())) {
+            SUCCESS.setData(byEmail.get());
+            return ResponseEntity.ok().body(SUCCESS);
+        }
+
+        return ResponseEntity.badRequest().body(NOT_FOUND);
+    }
 
 
 }

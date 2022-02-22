@@ -1,12 +1,12 @@
-package uz.ticket.eticket.entity.ticket;
+package uz.ticket.eticket.controller.user.entity.ticket;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import uz.ticket.eticket.entity.seat.SeatType;
-import uz.ticket.eticket.entity.user.Passenger;
+import uz.ticket.eticket.controller.user.entity.seat.SeatType;
+import uz.ticket.eticket.controller.user.entity.user.Passenger;
 
 import javax.persistence.*;
 

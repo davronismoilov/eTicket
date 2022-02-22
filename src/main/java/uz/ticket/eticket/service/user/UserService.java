@@ -3,12 +3,14 @@ package uz.ticket.eticket.service.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import uz.ticket.eticket.entity.user.Role;
-import uz.ticket.eticket.entity.user.User;
+import uz.ticket.eticket.controller.user.entity.user.Role;
+import uz.ticket.eticket.controller.user.entity.user.User;
 import uz.ticket.eticket.payload.UserDTO;
 import uz.ticket.eticket.repository.user.RoleRepository;
 import uz.ticket.eticket.repository.user.UserRepository;
 import uz.ticket.eticket.response.ApiResponse;
+
+import java.util.Set;
 
 @Service
 @Component
@@ -37,7 +39,7 @@ public class UserService {
         Role role = new Role();
         role.setName("Admin");
         roleRepository.save(role);
-        user1.setRole(role);
+        user1.setRole((Set<Role>) role);
 
 
 

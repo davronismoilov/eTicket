@@ -2,12 +2,11 @@ package uz.ticket.eticket.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.ticket.eticket.entity.Ticket;
+import uz.ticket.eticket.controller.user.entity.Ticket;
 import uz.ticket.eticket.repository.TicketRepository;
 import uz.ticket.eticket.response.ApiResponse;
 import uz.ticket.eticket.response.BaseResponse;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

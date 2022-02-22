@@ -2,7 +2,7 @@ package uz.ticket.eticket.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.entity.User;
+import uz.ticket.eticket.controller.user.entity.user.User;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package uz.ticket.eticket.entity.user;
+package uz.ticket.eticket.controller.user.entity.user;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

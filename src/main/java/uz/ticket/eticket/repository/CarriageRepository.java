@@ -1,17 +1,9 @@
 package uz.ticket.eticket.repository;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
-import org.w3c.dom.Entity;
-import uz.ticket.eticket.entity.Carriage;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import uz.ticket.eticket.controller.user.entity.Carriage;
 
 @Component
 public interface CarriageRepository extends JpaRepository<Carriage, Long> {

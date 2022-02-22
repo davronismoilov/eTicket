@@ -1,12 +1,10 @@
-package uz.ticket.eticket.entity.carriage;
+package uz.ticket.eticket.controller.user.entity;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.entity.seat.Seat;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Component
@@ -18,9 +16,8 @@ public class Carriage {
     long trainId;
     @ManyToOne
     CarriageType carriageType;
-    @OneToMany
-    List<Seat> seatList;
 
+    int number;
 
 
 }

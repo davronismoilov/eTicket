@@ -1,4 +1,4 @@
-package uz.ticket.eticket.entity.seat;
+package uz.ticket.eticket.controller.user.entity;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -8,17 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
+public class CarriageType {
 
-public class Seat {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        long id;
-        boolean is_available = true;
-
-        int seatNumber;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+    String name;
 
 }

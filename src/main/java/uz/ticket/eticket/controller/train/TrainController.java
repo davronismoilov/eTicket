@@ -3,7 +3,7 @@ package uz.ticket.eticket.controller.train;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.ticket.eticket.entity.train.Train;
+import uz.ticket.eticket.controller.user.entity.train.Train;
 import uz.ticket.eticket.service.train.TrainService;
 
 @RestController

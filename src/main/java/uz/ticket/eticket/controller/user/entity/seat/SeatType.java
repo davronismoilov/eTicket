@@ -1,4 +1,4 @@
-package uz.ticket.eticket.entity;
+package uz.ticket.eticket.controller.user.entity.seat;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 @Entity
-public class Location {
+public class SeatType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,12 +19,12 @@ public class Location {
     @Column(unique = true, nullable = false)
     String name;
 
-    public Location(long id, String name) {
+    public SeatType(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Location() {
+    public SeatType() {
     }
 
     public long getId() {

@@ -1,9 +1,9 @@
-package uz.ticket.eticket.entity;
+package uz.ticket.eticket.controller.user.entity.user;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.enums.Roles;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class User {
 
     @Builder.Default
     @ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    Set<Role> role = new HashSet<>(Arrays.asList(new Role(Roles.USER.name())));
+    Set<Role> role = new HashSet<>(Arrays.asList(new Role(uz.ticket.eticket.enums.Role.USER.name())));
 
     public User() {
 
