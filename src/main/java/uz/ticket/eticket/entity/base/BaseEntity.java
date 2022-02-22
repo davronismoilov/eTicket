@@ -1,5 +1,6 @@
 package uz.ticket.eticket.entity.base;
 
+import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+@Data
 @MappedSuperclass
 public abstract class BaseEntity {
     @Id

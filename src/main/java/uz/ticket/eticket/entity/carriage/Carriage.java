@@ -13,8 +13,10 @@ import java.util.List;
 public class Carriage extends BaseEntity {
 
     long trainId;
+
     @ManyToOne
     CarriageType carriageType;
+
     @OneToMany
     List<Seat> seatList;
 

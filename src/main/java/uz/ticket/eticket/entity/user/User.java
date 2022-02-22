@@ -22,7 +22,6 @@ public class User extends BaseEntity {
     @Column(unique = true , nullable = false)
     String phoneNumber;
 
-
     @Column(nullable = false)
     String password;
 

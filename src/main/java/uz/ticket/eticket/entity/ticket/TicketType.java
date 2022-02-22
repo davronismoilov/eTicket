@@ -19,7 +19,9 @@ import javax.persistence.*;
 @Entity
 public class TicketType {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id;
 
     @Column(unique = true, nullable = false)
     String name;
