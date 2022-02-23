@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.Accessors;
-import uz.ticket.eticket.controller.user.entity.user.Role;
+import uz.ticket.eticket.entity.user.Role;
 
 import java.util.Set;
 

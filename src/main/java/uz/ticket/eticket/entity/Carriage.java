@@ -1,4 +1,4 @@
-package uz.ticket.eticket.controller.user.entity;
+package uz.ticket.eticket.entity;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

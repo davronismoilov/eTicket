@@ -1,9 +1,9 @@
-package uz.ticket.eticket.controller.user.entity.carriage;
+package uz.ticket.eticket.entity.carriage;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.controller.user.entity.seat.Seat;
+import uz.ticket.eticket.entity.seat.Seat;
 
 import javax.persistence.*;
 import java.util.List;

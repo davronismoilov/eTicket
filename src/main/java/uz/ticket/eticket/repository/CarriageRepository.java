@@ -3,7 +3,7 @@ package uz.ticket.eticket.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.controller.user.entity.Carriage;
+import uz.ticket.eticket.entity.Carriage;
 
 @Component
 public interface CarriageRepository extends JpaRepository<Carriage, Long> {

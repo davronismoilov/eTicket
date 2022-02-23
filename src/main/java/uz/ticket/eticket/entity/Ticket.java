@@ -1,9 +1,9 @@
-package uz.ticket.eticket.controller.user.entity;
+package uz.ticket.eticket.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import uz.ticket.eticket.controller.user.entity.ticket.TicketType;
-import uz.ticket.eticket.controller.user.entity.user.Passenger;
+import uz.ticket.eticket.entity.ticket.TicketType;
+import uz.ticket.eticket.entity.user.Passenger;
 
 import javax.persistence.*;
 

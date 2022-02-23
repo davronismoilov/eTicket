@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import uz.ticket.eticket.controller.user.entity.user.User;
+import uz.ticket.eticket.entity.user.User;
 import uz.ticket.eticket.payload.UserDTO;
 import uz.ticket.eticket.repository.UserRepository;
 import uz.ticket.eticket.response.BaseResponse;

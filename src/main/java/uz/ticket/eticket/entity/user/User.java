@@ -1,4 +1,4 @@
-package uz.ticket.eticket.controller.user.entity.user;
+package uz.ticket.eticket.entity.user;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;

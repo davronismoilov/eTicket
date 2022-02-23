@@ -1,4 +1,4 @@
-package uz.ticket.eticket.controller.user.entity;
+package uz.ticket.eticket.entity;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class Seat {
+public class     Seat {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         long id;

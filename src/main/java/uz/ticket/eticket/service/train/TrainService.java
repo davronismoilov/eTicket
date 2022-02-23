@@ -2,7 +2,7 @@ package uz.ticket.eticket.service.train;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.ticket.eticket.controller.user.entity.train.Train;
+import uz.ticket.eticket.entity.train.Train;
 import uz.ticket.eticket.repository.train.TrainRepository;
 import uz.ticket.eticket.response.ApiResponse;
 
