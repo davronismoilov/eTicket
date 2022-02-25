@@ -3,6 +3,7 @@ package uz.ticket.eticket.entity.seat;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
 
@@ -10,29 +11,19 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 @Entity
-public class SeatType {
+public class SeatType extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+
 
     @Column(unique = true, nullable = false)
     String name;
 
-    public SeatType(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public SeatType() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public SeatType(String name) {
+        this.name = name;
     }
 
     public String getName() {

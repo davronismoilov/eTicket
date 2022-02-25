@@ -3,10 +3,11 @@ package uz.ticket.eticket.response;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BaseResponse  {
-        public ApiResponse SUCCESS = new ApiResponse("Success", 0);
-        public ApiResponse USER_NOT_FOUND = new ApiResponse("Username or password in correct", -10);
-        public ApiResponse USER_ALREADY_EXISTS = new ApiResponse("User already exist ", -30);
-        public ApiResponse NOT_FOUND = new ApiResponse("Not found", -30);
-        public ApiResponse ALREADY_EXISTS = new ApiResponse(" already exist ", -30);
+public class BaseResponse BaseResponse {
+         ApiResponse SUCCESS = new ApiResponse("Success", 0);
+         ApiResponse UNSUCCESS = new ApiResponse("Unsuccess", 0);
+         ApiResponse USER_NOT_FOUND = new ApiResponse("Username or password in correct", -10);
+         ApiResponse USER_ALREADY_EXISTS = new ApiResponse("User already exist ", -30);
+         ApiResponse NOT_FOUND = new ApiResponse("Not found", -30);
+         ApiResponse ALREADY_EXISTS = new ApiResponse(" already exist ", -30);
 }

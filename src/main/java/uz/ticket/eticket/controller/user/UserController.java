@@ -7,18 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.ticket.eticket.payload.UserDTO;
 import uz.ticket.eticket.response.ApiResponse;
-import uz.ticket.eticket.service.user.UserService;
+import uz.ticket.eticket.service.UserService;
+
 
 @RestController
 @RequestMapping("/api/user")
 
 public class UserController {
-    @Autowired
+    final
     UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/login")
     public ApiResponse login(@RequestBody UserDTO user) {
-        System.out.println(user);
         return userService.login(user);
 
     }

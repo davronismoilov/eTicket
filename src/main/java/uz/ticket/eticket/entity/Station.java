@@ -1,29 +1,30 @@
-package uz.ticket.eticket.entity.ticket;
+package uz.ticket.eticket.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Component;
-import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
-
+@Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Component
-@Entity
-public class TicketType {
+public class Station {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    Integer id;
 
-    @Column(unique = true, nullable = false)
+    @Column
     String name;
-}
 
+    public Station(String name) {
+        this.name = name;
+    }
+
+}

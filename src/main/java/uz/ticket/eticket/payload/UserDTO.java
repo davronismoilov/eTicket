@@ -17,10 +17,8 @@ import java.util.Set;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO {
-    private String email;
+    private String username;
     private String password;
-    private String mobileNumber;
-    private boolean isAdmin;
     private Set<Role> roles;
 
 }

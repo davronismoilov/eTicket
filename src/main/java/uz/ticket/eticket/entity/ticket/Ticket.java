@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import uz.ticket.eticket.entity.base.BaseEntity;
 import uz.ticket.eticket.entity.seat.SeatType;
 import uz.ticket.eticket.entity.user.Passenger;
 
@@ -16,10 +17,8 @@ import javax.persistence.*;
 //@NoArgsConstructor
 //@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Ticket {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+public class Ticket extends BaseEntity {
+
     @ManyToOne
     TicketType ticketType;
 

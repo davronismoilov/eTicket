@@ -3,20 +3,16 @@ package uz.ticket.eticket.entity.carriage;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CarriageType {
+public class CarriageType extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+
     String name;
 
 }
