@@ -33,7 +33,7 @@ public class UserService {
     }
 
 
-    public ResponseEntity<?> signup(UserDTO userDto) {
+    public ResponseEntity<?> register(UserDTO userDto) {
         Optional<User> byEmail = userRepository.findByUsername(userDto.getUsername());
         if (byEmail.isEmpty()) {
             User user = mapper.map(userDto, User.class);

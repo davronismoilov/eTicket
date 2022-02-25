@@ -1,6 +1,7 @@
 package uz.ticket.eticket.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +23,13 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ApiResponse login(@RequestBody UserDTO user) {
+    public ResponseEntity<?> login(@RequestBody UserDTO user) {
         return userService.login(user);
 
     }
 
     @PostMapping("/register")
-    public ApiResponse register(@RequestBody UserDTO user) {
+    public ResponseEntity<?> register(@RequestBody UserDTO user) {
         return userService.register(user);
 
     }
