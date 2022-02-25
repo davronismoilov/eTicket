@@ -1,8 +1,11 @@
 package uz.ticket.eticket.response;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component
+@Data
+
 public class BaseResponse {
          ApiResponse SUCCESS = new ApiResponse("Success", 0);
          ApiResponse UNSUCCESS = new ApiResponse("Unsuccess", 0);

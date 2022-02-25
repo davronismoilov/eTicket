@@ -1,5 +1,6 @@
 package uz.ticket.eticket.service;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,52 +9,56 @@ import org.springframework.stereotype.Component;
 import uz.ticket.eticket.entity.user.User;
 import uz.ticket.eticket.payload.UserDTO;
 import uz.ticket.eticket.repository.user.UserRepository;
+import uz.ticket.eticket.response.ApiResponse;
+import uz.ticket.eticket.response.BaseResponse;
 
 
 import java.util.Optional;
 
 
 @Component
-public class UserService{
+public class UserService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     private final UserRepository userRepository;
+    private final ModelMapper mapper;
+    private final BaseResponse baseResponse;
 
     @Autowired
-    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
+    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository, ModelMapper mapper, BaseResponse baseResponse) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userRepository = userRepository;
+        this.mapper = mapper;
+        this.baseResponse = baseResponse;
     }
 
 
     public ResponseEntity<?> signup(UserDTO userDto) {
-        Optional<User> byEmail = userRepository.findByEmail(userDto.getEmail());
+        Optional<User> byEmail = userRepository.findByUsername(userDto.getUsername());
         if (byEmail.isEmpty()) {
-            User user = new User();
-            user.setEmail(userDto.getEmail());
-            user.setPhoneNumber(userDto.getMobileNumber());
-            user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+            User user = mapper.map(userDto, User.class);
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(userRepository.save(user));
-            return ResponseEntity.status(HttpStatus.CREATED).body(SUCCESS);
+            return ResponseEntity.ok().body(SUCCESS);
 
         }
-        return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(USER_ALREADY_EXISTS);
+        return ResponseEntity.ok().body(baseResponse.getUSER_ALREADY_EXISTS());
     }
 
 
     public ResponseEntity<?> login(UserDTO userDto) {
-        Optional<User> byEmail = userRepository.findByEmail(userDto.getEmail());
+        Optional<User> byEmail = userRepository.findByUsername(userDto.getUsername());
         if (byEmail.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(USER_NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
 
         }
         if (bCryptPasswordEncoder.encode(userDto.getPassword()).equals(byEmail.get().getPassword())) {
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(byEmail.get());
             return ResponseEntity.ok().body(SUCCESS);
         }
 
-        return ResponseEntity.badRequest().body(NOT_FOUND);
+        return ResponseEntity.ok().body(baseResponse.getUSER_NOT_FOUND());
     }
 
 
