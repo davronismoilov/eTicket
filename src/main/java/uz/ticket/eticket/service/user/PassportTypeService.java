@@ -13,19 +13,22 @@ import java.util.Optional;
 
 @Service
 @Component
-public class PassportTypeService implements BaseResponse {
+public class PassportTypeService  {
 
     final
     PassportTypeRepository passportTypeRepository;
+    final BaseResponse baseResponse;
 
     @Autowired
-    public PassportTypeService(PassportTypeRepository passportTypeRepository) {
+    public PassportTypeService(PassportTypeRepository passportTypeRepository, BaseResponse baseResponse) {
         this.passportTypeRepository = passportTypeRepository;
 
+        this.baseResponse = baseResponse;
     }
 
     public ApiResponse getAllType() {
         List<PassportType> passportTypeList = passportTypeRepository.findAll();
+        ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(passportTypeList);
         return SUCCESS;
     }
@@ -33,10 +36,11 @@ public class PassportTypeService implements BaseResponse {
     public ApiResponse getById(Long id) {
         Optional<PassportType> byId = passportTypeRepository.findById(id);
         if (byId.isPresent()) {
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(byId.get());
             return SUCCESS;
         } else {
-            return NOT_FOUND;
+            return baseResponse.getNOT_FOUND();
         }
     }
 
@@ -47,10 +51,11 @@ public class PassportTypeService implements BaseResponse {
             PassportType passportType = byId.get();
             passportType.setName(name);
             passportTypeRepository.save(passportType);
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(passportType);
             return SUCCESS;
         } else {
-            return NOT_FOUND;
+            return baseResponse.getNOT_FOUND();
         }
     }
 
@@ -58,25 +63,27 @@ public class PassportTypeService implements BaseResponse {
         Optional<PassportType> byId = passportTypeRepository.findById(id);
         if (byId.isPresent()) {
             passportTypeRepository.deleteById(id);
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setMessage("delete");
             SUCCESS.setData(null);
             return  SUCCESS;
         } else {
-            return NOT_FOUND;
+            return baseResponse.getNOT_FOUND();
         }
     }
 
     public ApiResponse add(String name) {
         Optional<PassportType> byId = passportTypeRepository.findByName(name);
-        if (!byId.isPresent()) {
+        if (byId.isEmpty()) {
 
             PassportType passportType = new PassportType();
             passportType.setName(name);
             passportTypeRepository.save(passportType);
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(passportType);
             return SUCCESS;
         } else {
-            return ALREADY_EXISTS;
+            return baseResponse.getALREADY_EXISTS();
         }
 
     }
