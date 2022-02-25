@@ -3,7 +3,7 @@ package uz.ticket.eticket.response;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BaseResponse BaseResponse {
+public class BaseResponse {
          ApiResponse SUCCESS = new ApiResponse("Success", 0);
          ApiResponse UNSUCCESS = new ApiResponse("Unsuccess", 0);
          ApiResponse USER_NOT_FOUND = new ApiResponse("Username or password in correct", -10);
