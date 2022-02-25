@@ -11,20 +11,27 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StationService implements BaseResponse {
+public class StationService  {
 
-    @Autowired
-    private StationRepository stationRepository;
+    private final StationRepository stationRepository;
+   private final BaseResponse baseResponse;
+
+    public StationService(BaseResponse baseResponse, StationRepository stationRepository) {
+        this.baseResponse = baseResponse;
+        this.stationRepository = stationRepository;
+    }
 
     public ApiResponse getAllStations(){
         List<Station> all = stationRepository.findAll();
         System.out.println(all.size());
+        ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(all);
        return SUCCESS;
     }
 
     public ApiResponse getStation(int id){
         Optional<Station> stationOptional = stationRepository.findById(id);
+        ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(stationOptional.get());
         return SUCCESS;
     }
@@ -32,10 +39,12 @@ public class StationService implements BaseResponse {
     public ApiResponse addStation(Station station){
         boolean existsByName = stationRepository.existsByName(station.getName());
         if (existsByName){
+            ApiResponse ALREADY_EXISTS = baseResponse.getSUCCESS();
             ALREADY_EXISTS.setData(existsByName);
             return ALREADY_EXISTS;
         }
         stationRepository.save(station);
+        ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(!existsByName);
         return SUCCESS;
     }
@@ -47,9 +56,11 @@ public class StationService implements BaseResponse {
             if (station.getName() != null)
                 stationOld.setName(station.getName());
             stationRepository.save(stationOld);
+            ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(true);
             return SUCCESS;
         }
+        ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(false);
         return SUCCESS;
     }

@@ -9,7 +9,7 @@ import uz.ticket.eticket.response.BaseResponse;
 
 @Service
 
-public class SeatService implements BaseResponse {
+public class SeatService {
     final
     SeatRepository seatRepository;
 
@@ -20,7 +20,7 @@ public class SeatService implements BaseResponse {
 
     public ApiResponse updateSeat(Long id, Seat seat) {
 
-        return SUCCESS;
+        return new BaseResponse().getSUCCESS() ;
     }
 
 

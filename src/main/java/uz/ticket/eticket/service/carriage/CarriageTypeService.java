@@ -6,10 +6,11 @@ import org.springframework.stereotype.Service;
 import uz.ticket.eticket.entity.carriage.CarriageType;
 import uz.ticket.eticket.repository.carriage.CarriageTypeRepository;
 import uz.ticket.eticket.response.ApiResponse;
+import uz.ticket.eticket.response.BaseResponse;
 
 import java.util.List;
 
-import static uz.ticket.eticket.response.BaseResponse.SUCCESS;
+
 
 @Service
 public class CarriageTypeService {
@@ -22,6 +23,7 @@ CarriageTypeRepository carriageTypeRepository;
 
     public ApiResponse getCarriageTypeList(){
         List<CarriageType> carriageTypes = carriageTypeRepository.findAll();
+        ApiResponse SUCCESS = new BaseResponse().getSUCCESS();
         SUCCESS.setData(carriageTypes);
         return SUCCESS;
     }
