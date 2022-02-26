@@ -49,10 +49,10 @@ public class UserService {
     public ResponseEntity<?> login(UserDTO userDto) {
         Optional<User> byEmail = userRepository.findByUsername(userDto.getUsername());
         if (byEmail.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
+            return ResponseEntity.ok().body(baseResponse.getUSER_NOT_FOUND());
 
         }
-        if (bCryptPasswordEncoder.encode(userDto.getPassword()).equals(byEmail.get().getPassword())) {
+        if (byEmail.get().getPassword().equals(userDto.getPassword())) {
             ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(byEmail.get());
             return ResponseEntity.ok().body(SUCCESS);

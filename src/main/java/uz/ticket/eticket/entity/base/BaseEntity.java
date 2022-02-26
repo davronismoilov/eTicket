@@ -5,10 +5,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,6 +22,7 @@ public abstract class BaseEntity {
     private LocalDateTime createdDate;
     @LastModifiedBy
     private LocalDateTime updatedDate;
-    private boolean isActive;
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive = true;
 
 }

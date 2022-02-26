@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.ticket.eticket.repository.carriage.CarriageRepository;
-import uz.ticket.eticket.service.TicketService;
+import uz.ticket.eticket.service.ticket.TicketService;
+
 
 @RestController
 @RequestMapping("/api/ticket")

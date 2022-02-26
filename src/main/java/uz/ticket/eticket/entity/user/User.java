@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,11 +20,10 @@ public class User extends BaseEntity {
     @Column(unique = true , nullable = false)
     String username;
 
-
     @Column(nullable = false)
     String password;
 
-    @ManyToOne
-    Role role;
+    @ManyToMany
+    Set<Role> role;
 
 }
