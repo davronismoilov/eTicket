@@ -18,26 +18,27 @@ public class CarriageController {
 
     @GetMapping("findAll")
     public ResponseEntity<?> getCarriage() {
-        return ResponseEntity.ok(carriageService.getCarriagetList());
+        return carriageService.getCarriagetList();
     }
 
     @PostMapping("save")
-    public ResponseEntity<?> addCarriage(@RequestBody Carriage carriage) {
-        return ResponseEntity.ok(carriageService.addCarriage(carriage));
+    public ResponseEntity<?> addCarriage(@PathVariable long trainId,
+                                         @RequestBody Carriage carriage) {
+        return carriageService.addCarriage(trainId, carriage);
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateCarriage(@RequestBody Carriage carriage, @PathVariable Long id) {
-        return ResponseEntity.ok(carriageService.updateCarriage(id, carriage));
+    public ResponseEntity<?> updateCarriage(@RequestBody Carriage carriage) {
+        return carriageService.updateCarriage(carriage);
     }
 
     @DeleteMapping("delete")
     public ResponseEntity<?> deleteCarriage(@PathVariable Long id) {
-        return ResponseEntity.ok(carriageService.deleteCarriage(id));
+        return carriageService.deleteCarriage(id);
     }
 
     @GetMapping("getById")
     public ResponseEntity<?> getByIdCarriage(@PathVariable Long id) {
-        return ResponseEntity.ok(carriageService.getByIdCarriage(id));
+        return carriageService.getByIdCarriage(id);
     }
 }
