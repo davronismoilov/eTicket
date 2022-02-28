@@ -1,6 +1,5 @@
 package uz.ticket.eticket.response;
 
-import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component
