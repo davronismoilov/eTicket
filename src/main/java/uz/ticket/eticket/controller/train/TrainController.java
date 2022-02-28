@@ -20,7 +20,7 @@ public class TrainController {
 
     @PutMapping(value = "update")
     public ResponseEntity<?> updateTrain(@RequestBody Train train, @PathVariable Long id) {
-        return ResponseEntity.ok(trainService.update(id, train));
+        return ResponseEntity.ok(trainService.update(train));
     }
 
     @DeleteMapping(value = "delete")

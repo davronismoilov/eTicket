@@ -8,6 +8,7 @@ import uz.ticket.eticket.service.carriage.CarriageService;
 
 
 @RestController
+@RequestMapping("/api/carriage/")
 public class CarriageController {
     public final CarriageService carriageService;
 
