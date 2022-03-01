@@ -1,5 +1,6 @@
 package uz.ticket.eticket.entity.carriage;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import uz.ticket.eticket.entity.base.BaseEntity;
@@ -17,8 +18,8 @@ public class Carriage extends BaseEntity {
     @ManyToOne
     CarriageType carriageType;
 
-    @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    List<Seat> seatList;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<Seat> seats;
 
 
 }

@@ -39,8 +39,8 @@ public class RouteController {
 
     @PostMapping("/getTraffics")
     public ResponseEntity<?> getTrafficsByStations(@RequestParam("from_station") String from_station, @RequestParam("to_station") String to_station){
-        int fromStation = stationService.getStationIdByName(from_station);
-        int toStation = stationService.getStationIdByName(to_station);
+        long fromStation = stationService.getStationIdByName(from_station);
+        long toStation = stationService.getStationIdByName(to_station);
         return ResponseEntity.ok(routeService.getTrafficsbyStations(fromStation,toStation));
     }
 }

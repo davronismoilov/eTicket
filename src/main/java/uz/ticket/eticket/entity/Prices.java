@@ -1,26 +1,21 @@
 package uz.ticket.eticket.entity;
 
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import uz.ticket.eticket.entity.base.BaseEntity;
 
 import javax.persistence.*;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 @Entity
-public class Prices {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+public class Prices extends BaseEntity {
 
     @Column
     int traffic_id;

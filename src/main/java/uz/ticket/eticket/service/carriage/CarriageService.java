@@ -1,6 +1,7 @@
 package uz.ticket.eticket.service.carriage;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.ticket.eticket.entity.carriage.Carriage;
 import uz.ticket.eticket.repository.carriage.CarriageRepository;
@@ -11,11 +12,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CarriageService  {
-    final
-    CarriageRepository carriageRepository;
-    final
-    BaseResponse baseResponse;
+public class CarriageService {
+    final CarriageRepository carriageRepository;
+    final BaseResponse baseResponse;
 
     public CarriageService(CarriageRepository carriageRepository, BaseResponse baseResponse) {
         this.carriageRepository = carriageRepository;
@@ -23,39 +22,55 @@ public class CarriageService  {
     }
 
 
-    public ApiResponse getCarriagetList() {
+    public ResponseEntity<?> getCarriagetList() {
         List<Carriage> carriageList = carriageRepository.findAll();
+        if (carriageList.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getNOT_FOUND());
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(carriageList);
-        return SUCCESS;
+        return ResponseEntity.ok(SUCCESS);
     }
 
-    public ApiResponse addCarriage(Carriage carriage) {
-        Carriage saveCarriage = carriageRepository.save(carriage);
+    public ResponseEntity<?> addCarriage(long trainId, Carriage carriage) {
+        Optional<Carriage> carriageByTrainId = carriageRepository.findCarriageByTrainId(trainId);
+        if (carriageByTrainId.isPresent())
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(baseResponse.getALREADY_EXISTS());
+        Carriage save = carriageRepository.save(carriage);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
-        SUCCESS.setData(saveCarriage);
-        return SUCCESS;
+        SUCCESS.setData(save);
+        return ResponseEntity.ok(SUCCESS);
     }
 
-    public ApiResponse deleteCarriage(Long id) {
-        carriageRepository.deleteById(id);
+    public ResponseEntity<?> deleteCarriage(long id) {
+
+        Optional<Carriage> byId = carriageRepository.findById(id);
+        if (byId.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
+        Carriage carriage = byId.get();
+        carriage.setActive(false);
+        Carriage save = carriageRepository.save(carriage);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
-        return SUCCESS;
+        SUCCESS.setData(save);
+        return ResponseEntity.status(HttpStatus.OK).body(SUCCESS);
     }
 
-    public ApiResponse updateCarriage(Long id, Carriage carriage) {
-        deleteCarriage(id);
-        Carriage carriage1 = carriageRepository.save(carriage);
+    public ResponseEntity<?> updateCarriage(Carriage carriage, long id) {
+        Optional<Carriage> byId = carriageRepository.findById(id);
+        if (byId.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
+        carriage.setId(id);
+        Carriage save = carriageRepository.save(carriage);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
-        SUCCESS.setData(carriage1);
-        return SUCCESS;
+        SUCCESS.setData(save);
+        return ResponseEntity.ok(SUCCESS);
     }
 
-    public ApiResponse getByIdCarriage(Long id) {
+    public ResponseEntity<?> getCarriageById(long id) {
         Optional<Carriage> carriagebyId = carriageRepository.findById(id);
+        if (carriagebyId.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
-        carriagebyId.ifPresent(SUCCESS::setData);
-        return SUCCESS;
+        SUCCESS.setData(carriagebyId.get());
+        return ResponseEntity.status(HttpStatus.OK).body(SUCCESS);
     }
 
 

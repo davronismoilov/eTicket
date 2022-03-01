@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface CarriageRepository extends JpaRepository<Carriage, Long> {
     Optional<Carriage> getCarriageByTrainId(long l);
+
+    Optional<Carriage> findCarriageByTrainId(long trainId);
 }

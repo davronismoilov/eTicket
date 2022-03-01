@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface RouteRepository extends JpaRepository<Route,Integer> {
+public interface RouteRepository extends JpaRepository<Route, Integer> {
 
     @Query("select r from Route r where r.traffic_id = ?1 and r.station_id = ?2 and r.orders = ?3")
     Optional<Route> findByTraffic_idAndStation_idAndOrders(int traffic_id, int station_id, int orders);
@@ -24,8 +24,7 @@ public interface RouteRepository extends JpaRepository<Route,Integer> {
             "and r1.station_id =?1 \n" +
             "and r2.station_id =?2 \n" +
             "and r1.orders < r2.orders")
-    List<Integer> findTrafficsByStation_id(int from_station , int to_station);
-
+    List<Integer> findTrafficsByStation_id(long from_station, long to_station);
 
 
 }
