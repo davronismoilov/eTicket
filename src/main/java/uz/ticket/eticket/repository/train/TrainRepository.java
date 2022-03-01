@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface TrainRepository extends JpaRepository<Train, Long> {
     Optional<Train> findByCode(String code);
+    Optional<Train> findById(long id);
 }

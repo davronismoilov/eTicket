@@ -1,6 +1,5 @@
 package uz.ticket.eticket.controller.carriage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.ticket.eticket.entity.carriage.Carriage;
@@ -22,23 +21,22 @@ public class CarriageController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<?> addCarriage(@PathVariable long trainId,
-                                         @RequestBody Carriage carriage) {
+    public ResponseEntity<?> addCarriage(@PathVariable long trainId, @RequestBody Carriage carriage) {
         return carriageService.addCarriage(trainId, carriage);
     }
 
-    @PutMapping("update")
-    public ResponseEntity<?> updateCarriage(@RequestBody Carriage carriage) {
-        return carriageService.updateCarriage(carriage);
+    @PutMapping("update/{id}")
+    public ResponseEntity<?> updateCarriage(@RequestBody Carriage carriage, @PathVariable long id) {
+        return carriageService.updateCarriage(carriage, id);
     }
 
-    @DeleteMapping("delete")
-    public ResponseEntity<?> deleteCarriage(@PathVariable Long id) {
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> deleteCarriage(@PathVariable long id) {
         return carriageService.deleteCarriage(id);
     }
 
-    @GetMapping("getById")
-    public ResponseEntity<?> getByIdCarriage(@PathVariable Long id) {
-        return carriageService.getByIdCarriage(id);
+    @GetMapping("getById/{id}")
+    public ResponseEntity<?> getByIdCarriage(@PathVariable long id) {
+        return carriageService.getCarriageById(id);
     }
 }

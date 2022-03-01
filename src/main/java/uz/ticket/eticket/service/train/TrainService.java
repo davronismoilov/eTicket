@@ -37,14 +37,13 @@ public class TrainService {
 
     public ResponseEntity<?> findById(Long id) {
         Optional<Train> trainOptional = trainRepository.findById(id);
-        Train train = null;
         if (trainOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
         }
-        train = trainOptional.get();
+        Train train = trainOptional.get();
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(train);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
+        return ResponseEntity.ok(SUCCESS);
     }
 
 //    public ResponseEntity<?> saveaa(Train train) {
@@ -63,7 +62,11 @@ public class TrainService {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
     }
 
-    public ResponseEntity<?> update(Train train) {
+    public ResponseEntity<?> update(Train train, long id) {
+        Optional<Train> byId = trainRepository.findById(id);
+        if (byId.isEmpty())
+            return ResponseEntity.status(HttpStatus.OK).body(baseResponse.getUSER_NOT_FOUND());
+        train.setId(id);
         Train save = trainRepository.save(train);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(save);
@@ -73,7 +76,7 @@ public class TrainService {
     public ResponseEntity<?> delete(Long id) {
         Optional<Train> byId = trainRepository.findById(id);
         if(byId.isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getNOT_FOUND());
+            return ResponseEntity.status(HttpStatus.OK).body(baseResponse.getNOT_FOUND());
         Train train = byId.get();
         train.setActive(false);
         Train save = trainRepository.save(train);

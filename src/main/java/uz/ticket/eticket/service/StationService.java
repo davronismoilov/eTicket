@@ -1,6 +1,5 @@
 package uz.ticket.eticket.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.ticket.eticket.entity.Station;
 import uz.ticket.eticket.repository.StationRepository;
@@ -11,34 +10,34 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StationService  {
+public class StationService {
 
     private final StationRepository stationRepository;
-   private final BaseResponse baseResponse;
+    private final BaseResponse baseResponse;
 
     public StationService(BaseResponse baseResponse, StationRepository stationRepository) {
         this.baseResponse = baseResponse;
         this.stationRepository = stationRepository;
     }
 
-    public ApiResponse getAllStations(){
+    public ApiResponse getAllStations() {
         List<Station> all = stationRepository.findAll();
         System.out.println(all.size());
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(all);
-       return SUCCESS;
+        return SUCCESS;
     }
 
-    public ApiResponse getStation(int id){
+    public ApiResponse getStation(int id) {
         Optional<Station> stationOptional = stationRepository.findById(id);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(stationOptional.get());
         return SUCCESS;
     }
 
-    public ApiResponse addStation(Station station){
+    public ApiResponse addStation(Station station) {
         boolean existsByName = stationRepository.existsByName(station.getName());
-        if (existsByName){
+        if (existsByName) {
             ApiResponse ALREADY_EXISTS = baseResponse.getSUCCESS();
             ALREADY_EXISTS.setData(existsByName);
             return ALREADY_EXISTS;
@@ -49,12 +48,11 @@ public class StationService  {
         return SUCCESS;
     }
 
-    public ApiResponse editStation(int id, Station station){
+    public ApiResponse editStation(int id, Station station) {
         Optional<Station> stationOptional = stationRepository.findById(id);
-        if (stationOptional.isPresent()){
+        if (stationOptional.isPresent()) {
             Station stationOld = stationOptional.get();
-            if (station.getName() != null)
-                stationOld.setName(station.getName());
+            if (station.getName() != null) stationOld.setName(station.getName());
             stationRepository.save(stationOld);
             ApiResponse SUCCESS = baseResponse.getSUCCESS();
             SUCCESS.setData(true);
@@ -65,11 +63,10 @@ public class StationService  {
         return SUCCESS;
     }
 
-    public int getStationIdByName(String name){
+    public long getStationIdByName(String name) {
         Optional<Station> stationOptional = stationRepository.getByName(name);
 
-        if (stationOptional.isEmpty())
-            return 0;
+        if (stationOptional.isEmpty()) return 0;
 
         return stationOptional.get().getId();
     }

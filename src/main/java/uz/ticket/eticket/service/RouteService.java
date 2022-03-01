@@ -74,7 +74,7 @@ public class RouteService  {
         return SUCCESS;
     }
 
-    public ApiResponse getTrafficsbyStations(int from_station, int to_station){
+    public ApiResponse getTrafficsbyStations(long from_station, long to_station){
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(routeRepository.findTrafficsByStation_id(from_station,to_station));
         return SUCCESS;

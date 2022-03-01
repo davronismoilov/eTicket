@@ -41,7 +41,7 @@ public class CarriageService {
         return ResponseEntity.ok(SUCCESS);
     }
 
-    public ResponseEntity<?> deleteCarriage(Long id) {
+    public ResponseEntity<?> deleteCarriage(long id) {
 
         Optional<Carriage> byId = carriageRepository.findById(id);
         if (byId.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
@@ -50,23 +50,27 @@ public class CarriageService {
         Carriage save = carriageRepository.save(carriage);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(save);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
+        return ResponseEntity.status(HttpStatus.OK).body(SUCCESS);
     }
 
-    public ResponseEntity<?> updateCarriage(Carriage carriage) {
+    public ResponseEntity<?> updateCarriage(Carriage carriage, long id) {
+        Optional<Carriage> byId = carriageRepository.findById(id);
+        if (byId.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
+        carriage.setId(id);
         Carriage save = carriageRepository.save(carriage);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(save);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
+        return ResponseEntity.ok(SUCCESS);
     }
 
-    public ResponseEntity<?> getByIdCarriage(Long id) {
+    public ResponseEntity<?> getCarriageById(long id) {
         Optional<Carriage> carriagebyId = carriageRepository.findById(id);
         if (carriagebyId.isEmpty())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getUSER_NOT_FOUND());
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(carriagebyId.get());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
+        return ResponseEntity.status(HttpStatus.OK).body(SUCCESS);
     }
 
 

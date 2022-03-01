@@ -18,18 +18,18 @@ public class TrainController {
         return ResponseEntity.ok(trainService.save(train));
     }
 
-    @PutMapping(value = "update")
-    public ResponseEntity<?> updateTrain(@RequestBody Train train, @PathVariable Long id) {
-        return ResponseEntity.ok(trainService.update(train));
+    @PutMapping(value = "update/{id}")
+    public ResponseEntity<?> updateTrain(@RequestBody Train train, @PathVariable long id) {
+        return ResponseEntity.ok(trainService.update(train, id));
     }
 
-    @DeleteMapping(value = "delete")
-    public ResponseEntity<?> deleteTrain(@RequestBody Long id) {
+    @DeleteMapping(value = "delete/{id}")
+    public ResponseEntity<?> deleteTrain(@PathVariable long id) {
         return ResponseEntity.ok(trainService.delete(id));
     }
 
-    @GetMapping(value = "findById")
-    public ResponseEntity<?> getTrainById(@PathVariable Long id) {
+    @GetMapping(value = "findById/{id}")
+    public ResponseEntity<?> getTrainById(@PathVariable long id) {
         return ResponseEntity.ok(trainService.findById(id));
     }
 
