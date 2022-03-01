@@ -23,7 +23,7 @@ public class TrainController {
         return ResponseEntity.ok(trainService.update(id, train));
     }
 
-    @DeleteMapping(value = "delete")
+    @PostMapping(value = "delete")
     public ResponseEntity<?> deleteTrain(@RequestBody Long id) {
         return ResponseEntity.ok(trainService.delete(id));
     }
