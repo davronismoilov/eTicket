@@ -46,12 +46,6 @@ public class TrainService {
         return ResponseEntity.ok(SUCCESS);
     }
 
-//    public ResponseEntity<?> saveaa(Train train) {
-//        Train saveTrain = trainRepository.save(train);
-//        ApiResponse SUCCESS = baseResponse.getSUCCESS();
-//        SUCCESS.setData(saveTrain);
-//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
-//    }
 
     public ResponseEntity<?> findAll() {
         List<Train> all = trainRepository.findAll();
@@ -59,7 +53,7 @@ public class TrainService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(baseResponse.getNOT_FOUND());
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(all);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(SUCCESS);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     public ResponseEntity<?> update(Train train, long id) {
@@ -77,11 +71,10 @@ public class TrainService {
         Optional<Train> byId = trainRepository.findById(id);
         if(byId.isEmpty())
             return ResponseEntity.status(HttpStatus.OK).body(baseResponse.getNOT_FOUND());
-        Train train = byId.get();
-        train.setActive(false);
-        Train save = trainRepository.save(train);
-        ApiResponse success = baseResponse.getSUCCESS();
-        success.setData(save);
+
+        trainRepository.deleteById(id);
+         ApiResponse success = baseResponse.getSUCCESS();
+
         return ResponseEntity.ok(success);
 
 

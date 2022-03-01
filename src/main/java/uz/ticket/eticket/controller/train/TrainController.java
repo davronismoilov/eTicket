@@ -15,27 +15,27 @@ public class TrainController {
     // TODO: 19.02.2022 CRUD
     @PostMapping(value = "save")
     public ResponseEntity<?> addTrain(@RequestBody Train train) {
-        return ResponseEntity.ok(trainService.save(train));
+        return trainService.save(train);
     }
 
     @PutMapping(value = "update/{id}")
     public ResponseEntity<?> updateTrain(@RequestBody Train train, @PathVariable long id) {
-        return ResponseEntity.ok(trainService.update(train, id));
+        return trainService.update(train, id);
     }
 
-    @DeleteMapping(value = "delete/{id}")
-    public ResponseEntity<?> deleteTrain(@PathVariable long id) {
-        return ResponseEntity.ok(trainService.delete(id));
+    @PostMapping(value = "delete")
+    public ResponseEntity<?> deleteTrain(@RequestBody Long id) {
+        return trainService.delete(id);
     }
 
     @GetMapping(value = "findById/{id}")
     public ResponseEntity<?> getTrainById(@PathVariable long id) {
-        return ResponseEntity.ok(trainService.findById(id));
+        return trainService.findById(id);
     }
 
     @GetMapping(value = "findAll")
     public ResponseEntity<?> getTrainList() {
-        return ResponseEntity.ok(trainService.findAll());
+        return trainService.findAll();
     }
 
 }
