@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,9 +26,9 @@ public abstract class BaseEntity {
     @LastModifiedBy
     private String updatedBy;
     @CreatedDate
-    private LocalDateTime createdDate;
+    private Date createdDate;
     @LastModifiedBy
-    private LocalDateTime updatedDate;
+    private Date updatedDate;
     @Column(columnDefinition = "boolean default true")
     private boolean isActive = true;
 

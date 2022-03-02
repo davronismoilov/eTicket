@@ -18,7 +18,7 @@ public class Carriage extends BaseEntity {
     @ManyToOne
     CarriageType carriageType;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL , mappedBy = "")
     List<Seat> seats;
 
 

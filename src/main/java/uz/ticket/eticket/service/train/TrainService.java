@@ -32,7 +32,7 @@ public class TrainService {
         Train saveTrain = trainRepository.save(train);
         ApiResponse SUCCESS = baseResponse.getSUCCESS();
         SUCCESS.setData(saveTrain);
-        return ResponseEntity.ok(SUCCESS);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     public ResponseEntity<?> findById(Long id) {

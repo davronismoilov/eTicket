@@ -15,7 +15,7 @@ public class Seat extends BaseEntity {
 
     boolean is_available = true;
     int seatNumber;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     SeatType seatType;
 
 }

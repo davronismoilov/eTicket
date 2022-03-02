@@ -2,13 +2,12 @@ package uz.ticket.eticket.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uz.ticket.eticket.payload.UserDTO;
 import uz.ticket.eticket.response.ApiResponse;
 import uz.ticket.eticket.service.UserService;
+
+import java.io.IOException;
 
 
 @RestController
@@ -33,6 +32,17 @@ public class UserController {
         return userService.register(user);
 
     }
+
+    @GetMapping("/all_users")
+    public ResponseEntity<?> allUsers()  {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/download/users")
+    public ResponseEntity<?> getUsersExel() throws IOException {
+        return ResponseEntity.ok().body(userService.getUserFile());
+    }
+
 
 }
 
